@@ -24,7 +24,7 @@ async function BookingFormLoader() {
         department: String(d.department),
       }))}
     />
-    </Suspense>
+    
   );
 }
 
