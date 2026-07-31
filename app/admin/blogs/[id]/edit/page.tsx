@@ -13,7 +13,7 @@ interface Props {
 export default async function EditBlogPage({ params }: Props) {
   const { id } = await params;
   await connectDB();
-  const post = await Blog.findById(id).lean();
+  const post = await Blog.findById(id).lean() as any;
   if (!post) notFound();
 
   return (

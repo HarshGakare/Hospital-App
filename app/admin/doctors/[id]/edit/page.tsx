@@ -15,8 +15,8 @@ export default async function EditDoctorPage({ params }: Props) {
   const { id } = await params;
   await connectDB();
   const [departments, doctor] = await Promise.all([
-    Department.find().select("name").lean(),
-    Doctor.findById(id).lean(),
+    Department.find().select("name").lean() as any,
+    Doctor.findById(id).lean() as any,
   ]);
 
   if (!doctor) notFound();
@@ -25,7 +25,7 @@ export default async function EditDoctorPage({ params }: Props) {
     <div>
       <h1 className="mb-6 text-2xl font-bold text-slate-900">Edit Doctor</h1>
       <DoctorForm
-        departments={departments.map((d) => ({ _id: String(d._id), name: d.name }))}
+        departments={departments.map((d: any) => ({ _id: String(d._id), name: d.name }))}
         doctorId={id}
         defaultValues={{
           name: doctor.name,

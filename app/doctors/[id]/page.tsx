@@ -11,10 +11,24 @@ interface Props {
   params: Promise<{ id: string }>;
 }
 
-async function getDoctor(id: string) {
+interface DoctorType {
+  _id: string;
+  name: string;
+  profileImage: string;
+  specialization: string;
+  qualification: string;
+  experience: number;
+  email: string;
+  phone: string;
+  availability: string[];
+  bio: string;
+  department?: { _id: string; name: string } | null;
+}
+
+async function getDoctor(id: string): Promise<DoctorType | null> {
   if (!mongoose.Types.ObjectId.isValid(id)) return null;
   await connectDB();
-  const doctor = await Doctor.findById(id).populate("department", "name").lean();
+  const doctor = (await Doctor.findById(id).populate("department", "name").lean()) as DoctorType | null;
   return doctor;
 }
 

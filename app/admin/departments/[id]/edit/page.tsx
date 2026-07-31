@@ -13,7 +13,7 @@ interface Props {
 export default async function EditDepartmentPage({ params }: Props) {
   const { id } = await params;
   await connectDB();
-  const department = await Department.findById(id).lean();
+  const department = await Department.findById(id).lean() as any;
   if (!department) notFound();
 
   return (
