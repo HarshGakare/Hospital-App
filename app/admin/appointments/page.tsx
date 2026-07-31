@@ -26,7 +26,7 @@ export default async function AdminAppointmentsPage() {
               <th className="px-4 py-3">Patient</th>
               <th className="px-4 py-3">Doctor</th>
               <th className="px-4 py-3">Department</th>
-              <th className="px-4 py-3">Date &amp; Time</th>
+              <th className="px-4 py-3">Date</th>
               <th className="px-4 py-3">Contact</th>
               <th className="px-4 py-3 text-right">Actions</th>
             </tr>
@@ -40,7 +40,7 @@ export default async function AdminAppointmentsPage() {
                 </td>
                 <td className="px-4 py-3">{(appt.doctor as unknown as { name?: string })?.name}</td>
                 <td className="px-4 py-3">{(appt.department as unknown as { name?: string })?.name}</td>
-                <td className="px-4 py-3">{formatDate(appt.date)} · {appt.time}</td>
+                <td className="px-4 py-3">{formatDate(appt.date)}</td>
                 <td className="px-4 py-3 text-xs text-slate-500">{appt.email}<br />{appt.phone}</td>
                 <td className="px-4 py-3 text-right">
                   <DeleteButton action={deleteAppointment} id={String(appt._id)} label="appointment" />

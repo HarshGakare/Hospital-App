@@ -28,7 +28,7 @@ export async function appendAppointmentToSheet(row: AppointmentRow) {
       departmentName: row.departmentName,
       doctorName: row.doctorName,
       date: row.date,
-      time: row.time,
+      // time: row.time,
       message: row.message || "",
       bookingTime: new Date().toLocaleString("en-IN"),
     }),
