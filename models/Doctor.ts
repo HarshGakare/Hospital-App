@@ -1,4 +1,5 @@
 import mongoose, { Schema, models, model } from "mongoose";
+import "./Department";
 
 export interface IDoctor {
   _id?: string;

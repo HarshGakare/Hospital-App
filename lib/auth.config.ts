@@ -12,7 +12,7 @@ export default {
     Credentials({
       credentials: {},
       async authorize() {
-        // Placeholder for middleware.
+        
         return null;
       },
     }),

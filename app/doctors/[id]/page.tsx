@@ -5,6 +5,7 @@ import { Mail, Phone, GraduationCap, Briefcase, CalendarDays } from "lucide-reac
 import { connectDB } from "@/lib/mongodb";
 import Doctor from "@/models/Doctor";
 import mongoose from "mongoose";
+import "@/models/Department";
 import type { Metadata } from "next";
 
 interface Props {
@@ -28,8 +29,13 @@ interface DoctorType {
 async function getDoctor(id: string): Promise<DoctorType | null> {
   if (!mongoose.Types.ObjectId.isValid(id)) return null;
   await connectDB();
-  const doctor = (await Doctor.findById(id).populate("department", "name").lean()) as DoctorType | null;
+ try { 
+  const doctor = await Doctor.findById(id).populate("department", "name").lean<DoctorType>();
   return doctor;
+  }catch (err) {
+  console.error(err);
+  throw err;
+}
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

@@ -27,16 +27,16 @@ if (!global._mongooseCache) {
 }
 
 export async function connectDB(): Promise<typeof mongoose> {
-  // Reuse an existing open connection.
+
   if (cached.conn) {
     return cached.conn;
   }
 
-  // Reuse an in-flight connection attempt instead of starting a second one.
+
   if (!cached.promise) {
     const opts = {
-      bufferCommands: false, // fail fast instead of queuing ops if disconnected
-      maxPoolSize: 10, // cap concurrent sockets per Mongoose instance
+      bufferCommands: false, 
+      maxPoolSize: 10,
     };
 
     cached.promise = mongoose.connect(MONGODB_URI, opts).then((m) => m);
@@ -45,8 +45,7 @@ export async function connectDB(): Promise<typeof mongoose> {
   try {
     cached.conn = await cached.promise;
   } catch (err) {
-    // Reset so the next request can retry instead of being stuck on a
-    // rejected promise forever.
+
     cached.promise = null;
         console.error("❌ MongoDB Connection Error:", err);
     throw err;
