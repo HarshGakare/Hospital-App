@@ -20,7 +20,7 @@ interface AppointmentEmailData {
   doctorName: string;
   departmentName: string;
   date: string;
-  // time: string;
+  time: string;
   message?: string;
 }
 
@@ -65,7 +65,7 @@ export async function sendAdminNotification(data: AppointmentEmailData) {
        ["Doctor", data.doctorName],
        ["Department", data.departmentName],
        ["Date", data.date],
-      //  ["Time", data.time],
+       ["Time", data.time],
        ["Message", data.message || "—"],
      ])}`
   );
@@ -86,7 +86,7 @@ export async function sendPatientConfirmation(data: AppointmentEmailData) {
        ["Doctor", data.doctorName],
        ["Department", data.departmentName],
        ["Date", data.date],
-      //  ["Time", data.time],
+       ["Time", data.time],
      ])}
      <p style="color:#475569; margin-top:16px;">Please arrive 15 minutes early with any relevant medical records. If you need to reschedule, contact us at the number on our Emergency page.</p>`
   );

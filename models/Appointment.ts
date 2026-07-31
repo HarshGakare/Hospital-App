@@ -26,7 +26,7 @@ const AppointmentSchema = new Schema<IAppointment>(
     department: { type: Schema.Types.ObjectId, ref: "Department", required: true },
     doctor: { type: Schema.Types.ObjectId, ref: "Doctor", required: true },
     date: { type: String, required: true },
-    // time: { type: String, required: true },
+    time: { type: String, required: true },
     message: { type: String, default: "" },
     status: { type: String, enum: ["pending", "confirmed", "cancelled"], default: "pending" },
   },

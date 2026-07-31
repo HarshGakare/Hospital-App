@@ -9,7 +9,7 @@ export const appointmentSchema = z.object({
   department: z.string().min(1, "Select a department"),
   doctor: z.string().min(1, "Select a doctor"),
   date: z.string().min(1, "Select a date"),
-  // time: z.string().min(1, "Select a time"),
+  time: z.string().min(1, "Select a time"),
   message: z.string().max(500).optional(),
 });
 
