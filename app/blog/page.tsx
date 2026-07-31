@@ -50,7 +50,9 @@ export default function BlogPage(props: BlogPageProps) {
         <p className="mt-2 text-slate-500">Tips and insights from our specialists</p>
       </div>
       <div className="mb-8 mx-auto max-w-sm">
+         <Suspense fallback={<div>Loading search...</div>}>
         <SearchBar placeholder="Search articles..." />
+        </Suspense>
       </div>
       <Suspense fallback={<div className="text-center text-slate-400">Loading articles...</div>}>
         <BlogList {...props} />

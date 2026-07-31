@@ -34,7 +34,9 @@ async function DoctorsList({ searchParams }: DoctorsPageProps) {
         <div className="w-full sm:max-w-xs">
           <SearchBar placeholder="Search doctors by name..." />
         </div>
+        <Suspense fallback={<div>Loading...</div>}>
         <DoctorFilters departments={departments.map((d) => ({ _id: String(d._id), name: d.name }))} />
+          </Suspense>
       </div>
 
       {doctors.length === 0 ? (

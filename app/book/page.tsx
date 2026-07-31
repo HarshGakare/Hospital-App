@@ -15,6 +15,7 @@ async function BookingFormLoader() {
   ]);
 
   return (
+    
     <AppointmentForm
       departments={departments.map((d) => ({ _id: String(d._id), name: d.name }))}
       doctors={doctors.map((d) => ({
@@ -23,6 +24,7 @@ async function BookingFormLoader() {
         department: String(d.department),
       }))}
     />
+    </Suspense>
   );
 }
 
